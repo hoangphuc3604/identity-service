@@ -1,8 +1,8 @@
 package com.springproject.identityservice.service;
 
+import java.util.HashSet;
 import java.util.List;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +10,7 @@ import com.springproject.identityservice.dto.request.UserCreationRequest;
 import com.springproject.identityservice.dto.request.UserUpdateRequest;
 import com.springproject.identityservice.dto.response.UserResponse;
 import com.springproject.identityservice.entity.User;
+import com.springproject.identityservice.enums.Role;
 import com.springproject.identityservice.exception.AppException;
 import com.springproject.identityservice.exception.ErrorCode;
 import com.springproject.identityservice.mapper.UserMapper;
@@ -25,6 +26,7 @@ import lombok.experimental.FieldDefaults;
 public class UserService {
     UserRepository userRepository;
     UserMapper userMapper;
+    PasswordEncoder passwordEncoder;
 
     public UserResponse createUser(UserCreationRequest request) {
         if (userRepository.existsByUsername(request.getUsername())) {
@@ -32,13 +34,17 @@ public class UserService {
         }
 
         User user = userMapper.toUser(request);
-        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         user.setPassword(passwordEncoder.encode(request.getPassword()));
+
+        HashSet<String> roles = new HashSet<>();
+        roles.add(Role.USER.name());
+        user.setRoles(roles);
+
         return userMapper.toUserResponse(userRepository.save(user));
     }
 
-    public List<User> getUsers() {
-        return userRepository.findAll();
+    public List<UserResponse> getUsers() {
+        return userRepository.findAll().stream().map(userMapper::toUserResponse).toList();
     }
 
     public UserResponse getUser(String userId) {
