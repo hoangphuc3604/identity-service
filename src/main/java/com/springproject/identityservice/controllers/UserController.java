@@ -64,8 +64,17 @@ public class UserController {
     }
 
     @DeleteMapping("/{userId}")
-    public String deleteUser(@PathVariable String userId) {
+    public APIResponse<String> deleteUser(@PathVariable String userId) {
         userService.deleteUser(userId);
-        return "User has been delete.";
+        return APIResponse.<String>builder()
+                .data("This user has been successfully deleted.")
+                .build();
+    }
+
+    @GetMapping("/myInfo")
+    public APIResponse<UserResponse> getMyInfo() {
+        return APIResponse.<UserResponse>builder()
+                .data(userService.getMyInfo())
+                .build();
     }
 }
