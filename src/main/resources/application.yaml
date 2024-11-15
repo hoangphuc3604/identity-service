@@ -1,15 +1,20 @@
 server:
   port: 8080
   servlet:
-    context-path: /identity
+    context-path: /sushi-store
 spring:
   datasource:
-    url: "jdbc:mysql://localhost:3306/identity_service"
-    username: root
+    url: jdbc:sqlserver://localhost:1433;databaseName=SUSHI_STORE
+    username: sa
     password: root
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
+    defer-datasource-initialization: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
 jwt:
   signerKey: "%i[s3smF)6ofE+kgHv$u{J4)m-Rx4?Hq"
