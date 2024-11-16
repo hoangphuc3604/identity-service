@@ -7,10 +7,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.springproject.sushi.entity.Permission;
-import com.springproject.sushi.entity.Role;
-import com.springproject.sushi.entity.User;
 import com.springproject.sushi.enums.Roles;
+import com.springproject.sushi.model.Permission;
+import com.springproject.sushi.model.Role;
+import com.springproject.sushi.model.User;
 import com.springproject.sushi.repository.RoleReposity;
 import com.springproject.sushi.repository.UserRepository;
 
