@@ -4,13 +4,13 @@ server:
     context-path: /sushi-store
 spring:
   datasource:
-    url: jdbc:sqlserver://localhost:1433;databaseName=SUSHI_STORE
+    url: jdbc:sqlserver://localhost:1433;databaseName=SUSHI_STORE;encrypt=false;trustServerCertificate=true
     username: sa
     password: root
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     defer-datasource-initialization: true
     properties:
