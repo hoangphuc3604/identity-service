@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import com.springproject.sushi.dto.request.UserCreationRequest;
 import com.springproject.sushi.dto.request.UserUpdateRequest;
 import com.springproject.sushi.dto.response.UserResponse;
-import com.springproject.sushi.entity.User;
 import com.springproject.sushi.exception.AppException;
 import com.springproject.sushi.exception.ErrorCode;
 import com.springproject.sushi.mapper.UserMapper;
+import com.springproject.sushi.model.User;
 import com.springproject.sushi.repository.UserRepository;
 
 import lombok.AccessLevel;
@@ -51,12 +51,14 @@ public class UserService {
                 userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND)));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public UserResponse updateUser(String userId, UserUpdateRequest request) {
         User user = userRepository.findById(userId).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
         userMapper.updateUser(user, request);
         return userMapper.toUserResponse(userRepository.save(user));
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     public void deleteUser(String userId) {
         userRepository.deleteById(userId);
     }
@@ -65,7 +67,7 @@ public class UserService {
         var context = SecurityContextHolder.getContext();
         String name = context.getAuthentication().getName();
 
-        User user = userRepository.findByUsername(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXIST));
+        User user = userRepository.findByUsername(name).orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
         return userMapper.toUserResponse(user);
     }
 }

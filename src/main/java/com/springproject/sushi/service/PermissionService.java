@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 
 import com.springproject.sushi.dto.request.PermissionRequest;
 import com.springproject.sushi.dto.response.PermissionResponse;
-import com.springproject.sushi.entity.Permission;
 import com.springproject.sushi.mapper.PermissionMapper;
+import com.springproject.sushi.model.Permission;
 import com.springproject.sushi.repository.PermissionReposity;
 
 import lombok.AccessLevel;

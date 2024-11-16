@@ -2,7 +2,7 @@ package com.springproject.sushi.dto.response;
 
 import java.util.Set;
 
-import com.springproject.sushi.entity.Permission;
+import com.springproject.sushi.model.Permission;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;

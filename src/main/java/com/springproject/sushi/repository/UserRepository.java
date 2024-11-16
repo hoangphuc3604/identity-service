@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.springproject.sushi.entity.User;
+import com.springproject.sushi.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {

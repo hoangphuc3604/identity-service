@@ -8,17 +8,21 @@ import lombok.Getter;
 @Getter
 public enum ErrorCode {
 
-    USER_NOT_FOUND(404, "User not found.", HttpStatus.NOT_FOUND),
-    USER_EXISTED(409, "Username already exists.", HttpStatus.BAD_REQUEST),
-    UNCATEGORIZED_ERROR(400, "Uncategorized error.", HttpStatus.INTERNAL_SERVER_ERROR),
-    USERNAME_INVALID(400, "Username must be between 8 and 55 characters.", HttpStatus.BAD_REQUEST),
-    PASSWORD_INVALID(400, "Password must be between 8 and 16 characters.", HttpStatus.BAD_REQUEST),
-    INVALID_KEY(999, "Invalid error key.", HttpStatus.BAD_REQUEST),
-    USER_NOT_EXIST(404, "User does not exist.", HttpStatus.NOT_FOUND),
-    UNAUTHENTICATED(401, "Unauthenticated.", HttpStatus.UNAUTHORIZED),
-    UNAUTHORIZED(403, "You don't have permission.", HttpStatus.FORBIDDEN);
+    USER_NOT_FOUND(404, "Không tìm thấy người dùng.", HttpStatus.NOT_FOUND),
+    USER_EXISTED(409, "Tên người dùng không tồn tại.", HttpStatus.BAD_REQUEST),
+    UNCATEGORIZED_ERROR(400, "Lỗi chưa xác định.", HttpStatus.INTERNAL_SERVER_ERROR),
+    USERNAME_INVALID(400, "Tên người dùng phải từ 8 đến 15 ký tự.", HttpStatus.BAD_REQUEST),
+    PASSWORD_INVALID(400, "Mật khẩu phải từ 8 đến 16 ký tự.", HttpStatus.BAD_REQUEST),
+    INVALID_KEY(999, "Mã lỗi sai.", HttpStatus.BAD_REQUEST),
+    UNAUTHENTICATED(401, "Người dùng chưa xác thực.", HttpStatus.UNAUTHORIZED),
+    UNAUTHORIZED(403, "Bạn không có quyền truy cập.", HttpStatus.FORBIDDEN),
+    KHUVUC_NOT_FOUND(404, "Khu vực không tồn tại.", HttpStatus.NOT_FOUND),
+    CHINHANH_NOT_FOUND(404, "Chi nhánh không tồn tại.", HttpStatus.NOT_FOUND),
+    NHANVIEN_NOT_FOUND(404, "Nhân viên không tồn tại.", HttpStatus.NOT_FOUND),
+    ;
 
-    ErrorCode(int code, String message, HttpStatusCode statusCode) {
+    ErrorCode(int code, String message,
+            HttpStatusCode statusCode) {
         this.code = code;
         this.message = message;
         this.statusCode = statusCode;

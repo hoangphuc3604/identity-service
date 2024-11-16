@@ -29,10 +29,10 @@ import com.springproject.sushi.dto.request.IntrospectRequest;
 import com.springproject.sushi.dto.request.LogoutRequest;
 import com.springproject.sushi.dto.response.AuthResponse;
 import com.springproject.sushi.dto.response.IntrospectResponse;
-import com.springproject.sushi.entity.InvalidatedToken;
-import com.springproject.sushi.entity.User;
 import com.springproject.sushi.exception.AppException;
 import com.springproject.sushi.exception.ErrorCode;
+import com.springproject.sushi.model.InvalidatedToken;
+import com.springproject.sushi.model.User;
 import com.springproject.sushi.repository.InvalidatedTokenRepository;
 import com.springproject.sushi.repository.UserRepository;
 
@@ -54,7 +54,7 @@ public class AuthService {
 
     public AuthResponse authenticate(AuthRequest request) {
         lombok.var user = userRepository.findByUsername(request.getUsername())
-                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_EXIST));
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
         PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(10);
         boolean authenticated = passwordEncoder.matches(request.getPassword(), user.getPassword());

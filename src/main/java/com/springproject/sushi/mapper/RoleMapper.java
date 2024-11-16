@@ -5,7 +5,7 @@ import org.mapstruct.Mapping;
 
 import com.springproject.sushi.dto.request.RoleRequest;
 import com.springproject.sushi.dto.response.RoleResponse;
-import com.springproject.sushi.entity.Role;
+import com.springproject.sushi.model.Role;
 
 @Mapper(componentModel = "spring")
 public interface RoleMapper {

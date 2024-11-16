@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.springproject.sushi.dto.request.APIResponse;
-import com.springproject.sushi.entity.User;
+import com.springproject.sushi.model.User;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {

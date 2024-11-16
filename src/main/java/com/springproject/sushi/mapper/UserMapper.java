@@ -11,8 +11,8 @@ import org.mapstruct.factory.Mappers;
 import com.springproject.sushi.dto.request.UserCreationRequest;
 import com.springproject.sushi.dto.request.UserUpdateRequest;
 import com.springproject.sushi.dto.response.UserResponse;
-import com.springproject.sushi.entity.Role;
-import com.springproject.sushi.entity.User;
+import com.springproject.sushi.model.Role;
+import com.springproject.sushi.model.User;
 
 @Mapper(componentModel = "spring")
 public interface UserMapper {

@@ -4,7 +4,7 @@ import org.mapstruct.Mapper;
 
 import com.springproject.sushi.dto.request.PermissionRequest;
 import com.springproject.sushi.dto.response.PermissionResponse;
-import com.springproject.sushi.entity.Permission;
+import com.springproject.sushi.model.Permission;
 
 @Mapper(componentModel = "spring")
 public interface PermissionMapper {

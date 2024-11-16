@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.springproject.sushi.dto.request.RoleRequest;
 import com.springproject.sushi.dto.response.RoleResponse;
-import com.springproject.sushi.entity.Role;
 import com.springproject.sushi.mapper.RoleMapper;
+import com.springproject.sushi.model.Role;
 import com.springproject.sushi.repository.PermissionReposity;
 import com.springproject.sushi.repository.RoleReposity;
 
